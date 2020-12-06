@@ -50,6 +50,7 @@ const createCartItems=async(req,res)=>{
                 "product_qty":newQty
             }
         })
+        return res.json({data:qtyUpdate});
      }
      catch(err){
          return res.status(200).json(err);
