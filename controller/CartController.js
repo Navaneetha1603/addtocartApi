@@ -43,12 +43,13 @@ const createCartItems=async(req,res)=>{
  }
  const updateQuantity=async(req,res)=>{
      let id=req.params.product_id;
+     console.log(id);
      let newQty=req.body.product_qty;
      console.log(newQty);
      try{
-        const updateQty=await Cart.updateMany({"product_id":id},{
+        const updateQty=await Cart.findByIdAndUpdate({"product_id":id},{
             $set:{
-                "product_qty":newQty
+                "items.product_qty":1400
             }
         })
         if(!updateQty){
