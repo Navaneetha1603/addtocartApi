@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 // })
 var dbURL="mongodb+srv://mindtree:mindtree@cluster0.wuc4i.mongodb.net/<dbname>?retryWrites=true&w=majority";
 // var dbURL="mongodb://localhost/databases"
-mongoose.connect(dbURL);
+mongoose.connect(dbURL,{ useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on("connected",()=>{
     console.log("connected");
 });

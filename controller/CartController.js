@@ -49,7 +49,7 @@ const createCartItems=async(req,res)=>{
      try{
         const updateQty=await Cart.updateMany({"items.product_id":id},{
             $set:{
-                "items.$.product_qty":1400
+                "items.$.product_qty":newQty
             }
         })
         if(!updateQty){
@@ -62,6 +62,46 @@ const createCartItems=async(req,res)=>{
          return res.status(200).json(err);
      }
  }
+
+//delete the particular product
+const deleteProductsbyPid=async(req,res)=>{
+    let id=req.params.product_id;
+    try{
+        await Cart.deleteOne({"items.product_id":id});
+        return res.json({message:"deleted successfully"});
+    }
+    catch(err){
+        return res.status(200).json(err);
+    }
+}
+//delete the products 
+const deleteProductsbyUserId=async(req,res)=>{
+    let id=req.body.userEmail;
+    try{
+       const deletedUserCart= await Cart.deleteMany({"user_email":id})
+       return res.json({data:deletedUserCart});
+        // return res.json({message:"deleted successfully"});
+    }
+    catch(err){
+        return res.status(1000).json(err);
+    }
+}
+module.exports={
+    getCartItems,
+    createCartItems,
+    getCartById,
+    updateQuantity,
+    deleteProductsbyPid,
+    deleteProductsbyUserId
+    
+}
+
+
+
+
+
+
+
 // const createCartItems=async(req,res)=>{
 //    let id=req.params.productId;
 //    console.log(id);
@@ -120,10 +160,3 @@ const createCartItems=async(req,res)=>{
 //         return res.status(200).json(err);
 //     }
 // }
-module.exports={
-    getCartItems,
-    createCartItems,
-    getCartById,
-    updateQuantity
-    
-}

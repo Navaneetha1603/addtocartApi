@@ -11,6 +11,8 @@ router.post('/add/:productId',controller.createCartItems);
 // router.get('/getProducts/:Id',controller.productById);
 // router.get('/getProducts',controller.getProducts);
 router.get('/cartItems/:userEmail',controller.getCartById);
-// router.patch('/cartItems/:product_id',controller.updateQuantity);
+router.patch('/cartItems/:product_id',controller.updateQuantity);
+router.delete('/cartItems/:product_id',controller.deleteProductsbyPid);
+router.delete('/cartItems/:userEmail',controller.deleteProductsbyUserId);
 
 module.exports=router;
