@@ -16,7 +16,7 @@ const createCartItems=async(req,res)=>{
              const cart=new Cart(req.body);
             //  const cart=new Cart();
             //  cart.user_email=req.body.user_email;
-            //  cart.product_id=id;
+            //  cart.product_id=req.query.id;
             //  cart.product_qty=req.body.product_qty;
              try{
                  await cart.save();

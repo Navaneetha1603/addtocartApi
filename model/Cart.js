@@ -14,10 +14,10 @@ const cartSchema=new mongoose.Schema({
     user_email:{
         type:String,
         required:true,
-        match:[
-            /[\w]+?@[\w]+\.[a-z]{2,4}/,
-            `it is not valid email address`
-        ]
+        // match:[
+        //     /[\w]+?@[\w]+\.[a-z]{2,4}/,
+        //     `it is not valid email address`
+        // ]
     },
     items:[itemSchema]
 })
