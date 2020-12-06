@@ -76,14 +76,15 @@ const deleteProductsbyPid=async(req,res)=>{
 }
 //delete the products 
 const deleteProductsbyUserId=async(req,res)=>{
-    let id=req.body.userEmail;
+    let id=req.params.userEmail;
+    console.log(id);
     try{
-       const deletedUserCart= await Cart.deleteMany({"user_email":id})
+       const deletedUserCart= await Cart.deleteOne({"user_email":id})
        return res.json({data:deletedUserCart});
-        // return res.json({message:"deleted successfully"});
+     
     }
     catch(err){
-        return res.status(1000).json(err);
+        return res.status(200).json(err);
     }
 }
 module.exports={
