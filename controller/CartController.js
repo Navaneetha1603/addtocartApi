@@ -43,9 +43,13 @@ const createCartItems=async(req,res)=>{
  }
  const updateQuantity=async(req,res)=>{
      let id=req.params.product_id;
+     let newQty=eq.body.product_qty;
      try{
-        const qtyUpdate=await Cart.updateMany({"product_id":id},)
-       
+        const qtyUpdate=await Cart.updateMany({"product_id":id},{
+            $set:{
+                "product_qty":newQty
+            }
+        })
      }
      catch(err){
          return res.status(200).json(err);
