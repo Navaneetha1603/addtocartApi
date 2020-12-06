@@ -44,6 +44,7 @@ const createCartItems=async(req,res)=>{
  const updateQuantity=async(req,res)=>{
      let id=req.params.product_id;
      let newQty=req.body.product_qty;
+     console.log(new)
 
      try{
         const qtyUpdate=await Cart.updateMany({"product_id":id},{
