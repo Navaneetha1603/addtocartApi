@@ -79,9 +79,8 @@ const deleteProductsbyUserId=async(req,res)=>{
     let id=req.params.userEmail;
     console.log(id);
     try{
-       const deletedUserCart= await Cart.deleteOne({"user_email":id})
-       return res.json({data:deletedUserCart});
-     
+        await Cart.deleteOne({"user_email":id})
+        return res.json({message:"deleted successfully"});
     }
     catch(err){
         return res.status(200).json(err);
