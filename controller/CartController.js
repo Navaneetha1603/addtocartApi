@@ -44,15 +44,19 @@ const createCartItems=async(req,res)=>{
  const updateQuantity=async(req,res)=>{
      let id=req.params.product_id;
      let newQty=req.body.product_qty;
-     console.log(new)
+     console.log(newQty);
 
      try{
-        const qtyUpdate=await Cart.updateMany({"product_id":id},{
+        const updateQty=await Cart.updateMany({"product_id":id},{
             $set:{
                 "product_qty":newQty
             }
         })
-        return res.json({message:"update successfully"});
+        if(!updateQty){
+            return res.status(200).json(`${id} is not found`)
+        }
+        else{
+        return res.json({message:"update successfully"});}
      }
      catch(err){
          return res.status(200).json(err);
