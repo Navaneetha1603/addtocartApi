@@ -10,5 +10,6 @@ router.post('/add/:productId',controller.createCartItems);
 // router.get('/add/:Id',controller.createCartItems);
 // router.get('/getProducts/:Id',controller.productById);
 // router.get('/getProducts',controller.getProducts);
+router.get('/cartItems/:userEmail',controller.getCartById);
 
 module.exports=router;

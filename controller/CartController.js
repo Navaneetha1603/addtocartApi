@@ -31,6 +31,16 @@ const createCartItems=async(req,res)=>{
         return res.status(200).json(err);
     }
  }
+ const getCartById=async(req,res)=>{
+     let id=req.params.userEmail;
+     try{
+        const cartItemsById=await Cart.find({"user_email":id});
+        return res.json({data:cartItemsById});
+     }
+     catch(err){
+         return res.status(200).json(err);
+     }
+ }
 // const createCartItems=async(req,res)=>{
 //    let id=req.params.productId;
 //    console.log(id);
@@ -91,6 +101,7 @@ const createCartItems=async(req,res)=>{
 // }
 module.exports={
     getCartItems,
-    createCartItems
+    createCartItems,
+    getCartById
     
 }
