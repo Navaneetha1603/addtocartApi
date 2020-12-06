@@ -41,6 +41,15 @@ const createCartItems=async(req,res)=>{
          return res.status(200).json(err);
      }
  }
+ const updateQuantity=async(req,res)=>{
+     let id=req.params.product_id;
+     try{
+        
+     }
+     catch(err){
+         return res.status(200).json(err);
+     }
+ }
 // const createCartItems=async(req,res)=>{
 //    let id=req.params.productId;
 //    console.log(id);
@@ -102,6 +111,7 @@ const createCartItems=async(req,res)=>{
 module.exports={
     getCartItems,
     createCartItems,
-    getCartById
+    getCartById,
+    updateQuantity
     
 }
